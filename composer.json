@@ -1,0 +1,56 @@
+{
+    "name": "aliwebto/easy-payment",
+    "description": "Laravel Payment Package For Iranian",
+    "keywords": [
+        "aliwebto",
+        "easy-payment"
+    ],
+    "homepage": "https://github.com/aliwebto/easy-payment",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Alireza Zarei",
+            "email": "aliwebto@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0|^9.0|^10.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.10",
+        "orchestra/testbench": "^6.28",
+        "pestphp/pest": "^1.23",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aliwebto\\EasyPayment\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Aliwebto\\EasyPayment\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Aliwebto\\EasyPayment\\EasyPaymentServiceProvider"
+            ],
+            "aliases": {
+                "EasyPayment": "Aliwebto\\EasyPayment\\EasyPaymentFacade"
+            }
+        }
+    }
+}

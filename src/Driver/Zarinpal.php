@@ -23,9 +23,9 @@ class Zarinpal extends DriverAbstract implements DriverInterface
 
 
     // sandbox for testing mode
-    protected string $sandboxEndPoint = 'https://sandbox.zarinpal.com/pg/StartPay/{authority}';
-    protected string $sandboxRequestAPI = "https://sandbox.zarinpal.com/pg/v4/payment/request.json";
-    protected string $sandboxVerifyAPI = "https://sandbox.zarinpal.com/pg/v4/payment/verify.json";
+    protected string $sandboxEndPoint = 'https://sandbox.banktest.ir/zarinpal/www.zarinpal.com/pg/StartPay/{authority}';
+    protected string $sandboxRequestAPI = "https://sandbox.banktest.ir/zarinpal/api.zarinpal.com/pg/v4/payment/request.json";
+    protected string $sandboxVerifyAPI = "https://sandbox.banktest.ir/zarinpal/api.zarinpal.com/pg/v4/payment/verify.json";
 
     /**
      * @throws RequiredConfigMissingException

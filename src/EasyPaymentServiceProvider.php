@@ -30,9 +30,9 @@ class EasyPaymentServiceProvider extends ServiceProvider
             ], 'views');*/
 
             // Publishing assets.
-            /*$this->publishes([
+            $this->publishes([
                 __DIR__.'/../resources/assets' => public_path('vendor/easy-payment'),
-            ], 'assets');*/
+            ], 'assets');
 
             // Publishing the translation files.
             /*$this->publishes([
@@ -51,6 +51,7 @@ class EasyPaymentServiceProvider extends ServiceProvider
     {
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'easy-payment');
+        $this->loadViewsFrom(__DIR__.'/../resources/views/', 'easy-payment');
 
         // Register the main class to use with the facade
         $this->app->singleton('easy-payment', function () {

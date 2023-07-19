@@ -2,7 +2,13 @@
 
 namespace Aliwebto\EasyPayment;
 
+use Aliwebto\EasyPayment\Driver\Zarinpal;
+
 class EasyPayment
 {
-    // Build your next great package.
+    public static function pay()
+    {
+        $gateway = new Zarinpal();
+        return $gateway->pay(10000, "payment for user 1");
+    }
 }

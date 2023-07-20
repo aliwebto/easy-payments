@@ -15,9 +15,9 @@ class EasyPaymentServiceProvider extends ServiceProvider
          * Optional methods to load your package assets
          */
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'easy-payment');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'easy-payment');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+         $this->loadViewsFrom(__DIR__.'/../resources/views', 'easy-payment');
+         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+         $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -51,7 +51,6 @@ class EasyPaymentServiceProvider extends ServiceProvider
     {
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'easy-payment');
-        $this->loadViewsFrom(__DIR__.'/../resources/views/', 'easy-payment');
 
         // Register the main class to use with the facade
         $this->app->singleton('easy-payment', function () {

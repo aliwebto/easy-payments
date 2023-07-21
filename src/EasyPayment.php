@@ -10,7 +10,6 @@ use Illuminate\Support\Str;
 
 class EasyPayment
 {
-
     public static function pay(Model $payableModel, int $amount, $description, $specificCard = null)
     {
         throw_if(is_null($payableModel->transactions), "model " . class_basename($payableModel) . " not payable");
@@ -28,6 +27,27 @@ class EasyPayment
         $data["pay_url"] = URL::signedRoute("easy-payment.payment", [
             "id" => $transaction->id,
             "uuid" => base64_encode($transaction_uuid)
+        ]);
+        return $data;
+    }
+
+    public static function loadTransactionFromUUID($transactionUuid): array
+    {
+        $transaction = Transaction::where("transaction_uuid", $transactionUuid)->first();
+        throw_if(is_null($transaction), "Transaction not found");
+        $paymentsCount = $transaction->amount / config("easy-payment.maxPaymentAmount");
+
+        $data = [
+            "transaction_uuid" => $transactionUuid,
+            "amount" => $transaction->amount,
+            "description" => $transaction->description,
+            "specificCard" => $transaction->specificCard
+        ];
+        $data["payments_count"] = ceil($paymentsCount);
+        $data["id"] = $transaction->id;
+        $data["pay_url"] = URL::signedRoute("easy-payment.payment", [
+            "id" => $transaction->id,
+            "uuid" => base64_encode($transactionUuid)
         ]);
         return $data;
     }
@@ -60,7 +80,7 @@ class EasyPayment
         ]);
 
         $paidAmount = 0;
-        foreach ($payment->transaction->payments()->where("paid_at","!=",null)->get() as $payment ){
+        foreach ($payment->transaction->payments()->where("paid_at", "!=", null)->get() as $payment) {
             $paidAmount += $payment->amount;
         }
         $transaction_update = [

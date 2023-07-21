@@ -4,6 +4,7 @@ namespace Aliwebto\EasyPayment\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Transaction extends Model
@@ -26,5 +27,10 @@ class Transaction extends Model
     public function payable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
     }
 }

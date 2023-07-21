@@ -13,10 +13,6 @@ return [
         "driver" => \Aliwebto\EasyPayment\Driver\Zarinpal::class,
         "merchantID" => env("EASYPAYMENT_ZARINPAL_MERCHANTID", "123456789012345678901234567890123456"),
         "mode" => "sandbox" // default - zaringate - sandbox
-    ],
-    "payping" => [
-        "driver" => \Aliwebto\EasyPayment\Driver\Payping::class,
-        "token" => env("EASYPAYMENT_PAYPING_TOKEN", "")
     ]
 ]
 ];

@@ -9,10 +9,14 @@ return [
     "returnAfterComplete" => env("EASYPAYMENT_RETURN_PATH", "/"),
     "callbackURL" => env("EASYPAYMENT_CALLBACK", "http://localhost:8888/easy-payment/verify"),
     "gateways" => [
-    "zarinpal" => [
-        "driver" => \Aliwebto\EasyPayment\Driver\Zarinpal::class,
-        "merchantID" => env("EASYPAYMENT_ZARINPAL_MERCHANTID", "123456789012345678901234567890123456"),
-        "mode" => "sandbox" // default - zaringate - sandbox
+        "zarinpal" => [
+            "driver" => \Aliwebto\EasyPayment\Driver\Zarinpal::class,
+            "merchantID" => env("EASYPAYMENT_ZARINPAL_MERCHANTID", "123456789012345678901234567890123456"),
+            "mode" => "sandbox" // default - zaringate - sandbox
+        ],
+        "zibal" => [
+            "driver" => \Aliwebto\EasyPayment\Driver\Zibal::class,
+            "merchantID" => env("EASYPAYMENT_ZIBAL_MERCHANTID", "zibal") // merchent=zibal for test
+        ]
     ]
-]
 ];

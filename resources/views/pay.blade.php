@@ -224,11 +224,11 @@
                                 <div class="col-lg-3 col-6">
                                     <label>
                                         <input type="radio" name="shipping-type" class="card-input-element"
-                                               value="payping"/>
+                                               value="zibal"/>
                                         <div class="panel panel-default card-input">
                                             <div>
                                                 <div class="panel-body">
-                                                    <img src="{{ asset("vendor/easy-payment/payping.png") }}"
+                                                    <img src="{{ asset("vendor/easy-payment/zibal.svg") }}"
                                                          width="120px" alt="">
                                                 </div>
                                             </div>

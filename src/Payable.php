@@ -10,5 +10,8 @@ trait Payable
     {
         return $this->morphMany(Transaction::class, 'model');
     }
-    
+    public function paid(): bool
+    {
+        return $this->transactions()->where("paid_at","!=",null)->exists();
+    }
 }

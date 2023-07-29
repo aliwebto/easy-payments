@@ -12,19 +12,40 @@ You can install the package via composer:
 
 ```bash
 composer require aliwebto/easy-payment
+php artisan vendor:publish --provider="Aliwebto\EasyPayment\EasyPaymentServiceProvider"
+php artisan migrat
+
+// set your configs to config/easy-payment.php
 ```
 
 ## Usage
 
 ```php
-// Usage description here
+// payable model - use Payable trait in your payable model  Ex: invoice.
+use \Aliwebto\EasyPayment\Payable;
+
+
+
+
+// you have to make a payable model like invoice and relate it to users . then create invoice and pass to easy payment
+
+
+
+// create transaction and get data
+use Aliwebto\EasyPayment\EasyPayment
+$payable = \App\Models\Invoice::find(1);
+$amount = $payable->price;
+$description = "description of payment";
+$easyPayments = EasyPayment::pay($payable,$amount,$description);
+return redirect($easyPayments["pay_url"]);
+
+
+// check transaction is paid
+use Aliwebto\EasyPayment\EasyPayment
+$payable = \App\Models\Product::find(1);
+$payable->isPaid(); // bool
 ```
 
-### Testing
-
-```bash
-composer test
-```
 
 ### Changelog
 
